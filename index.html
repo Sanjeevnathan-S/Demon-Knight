@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demon Knight</title>
+  <style>
+    body { margin: 0; overflow-y: scroll; background: rgb(155, 95, 95); }
+    canvas { display: block; margin: auto; background: #000;width: 100%;height: 90vh; }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 4px;
+      font-size: 14px;
+      flex-shrink: 0; /* Prevent footer from shrinking */
+    }
+    footer a {
+      color: #5e8f6e;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    table {
+      border-collapse: collapse;  
+      width: auto;  
+      margin-left: 30px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    table, th, td {
+      border: 2px solid silver; 
+    }
+
+    td {
+      padding: 10px;  
+      text-align: center;  
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="1980" height="1080" ></canvas>
+  <div style="margin-left: 100px ;margin-top: 30px;display: block;">
+    <h1 style="font-weight: bold;font-style: italic;text-align: left;">Controls</h1>
+    <table>
+      <tr>
+        <td>←</td>
+        <td>Dodge</td>
+      </tr>
+      <tr>
+        <td>d</td>
+        <td>Dash</td>
+      </tr>
+      <tr>
+        <td>↑</td>
+        <td>Jump</td>
+      </tr>
+      <tr>
+        <td>→</td>
+        <td>Run</td>
+      </tr>
+      <tr>
+        <td>Ctrl + →</td>
+        <td>Slide</td>
+      </tr>
+      <tr>
+        <td>Ctrl + z</td>
+        <td>Crouch Attack</td>
+      </tr>
+      <tr>
+        <td>z</td>
+        <td>Basic Attack</td>
+      </tr>
+      <tr>
+        <td>x</td>
+        <td>Light Attack</td>
+      </tr>
+      <tr>
+        <td>c</td>
+        <td>Combo Attack</td>
+      </tr>
+    </table>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Demon Knight Game.</p>
+    <p><a href="https://github.com/san-007-007/Demon-Knight" target="_blank">source code</a></p>
+  </footer>
+
+  <script src="DemonKnight.js"></script>
+
+</body>
+</html>
