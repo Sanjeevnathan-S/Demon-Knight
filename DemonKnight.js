@@ -175,11 +175,11 @@ const deathImg=new Image();
 const hurtImg=new Image();
 const attackImg=new Image();
 const idleImg=new Image(); 
-flyImg.src='./Demon/Sprites/with_outline/FLYING.PNG';
-deathImg.src='./Demon/Sprites/with_outline/DEATH.PNG';
-hurtImg.src='./Demon/Sprites/with_outline/HURT.PNG';
-idleImg.src='./Demon/Sprites/with_outline/IDLE.PNG';
-attackImg.src='./Demon/Sprites/with_outline/ATTACK.PNG';
+flyImg.src='Demon/Sprites/with_outline/FLYING.PNG';
+deathImg.src='Demon/Sprites/with_outline/DEATH.PNG';
+hurtImg.src='Demon/Sprites/with_outline/HURT.PNG';
+idleImg.src='Demon/Sprites/with_outline/IDLE.PNG';
+attackImg.src='Demon/Sprites/with_outline/ATTACK.PNG';
 flyImg.onload = () => {
   enemyAnimations = {
     flying: { image: flyImg, frames: 4 },
@@ -272,31 +272,31 @@ let announcementTimer = 0;
 
  // Load images for each animation
 const walkImage = new Image();
-walkImage.src = './FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Run.PNG';
+walkImage.src = 'FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Run.PNG';
 const idleImage = new Image();
-idleImage.src = './FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Idle.PNG';
+idleImage.src = 'FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Idle.PNG';
 const slideImage=new Image();
-slideImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_SlideFull.PNG';
+slideImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_SlideFull.PNG';
 const attackImage=new Image();
-attackImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Attack.PNG';
+attackImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Attack.PNG';
 const attack2Image=new Image();
-attack2Image.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Attack2.PNG';
+attack2Image.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Attack2.PNG';
 const crouchAttackImage=new Image();
-crouchAttackImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_CrouchAttack.PNG';
+crouchAttackImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_CrouchAttack.PNG';
 const crouchImage=new Image();
-crouchImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Crouch.PNG';
+crouchImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Crouch.PNG';
 const comboImage=new Image();
-comboImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_AttackCombo2hit.PNG';
+comboImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_AttackCombo2hit.PNG';
 const dashImage=new Image();
-dashImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Dash.PNG';
+dashImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Dash.PNG';
 const deathImage=new Image();
-deathImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Death.PNG';
+deathImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Death.PNG';
 const hitImage=new Image();
-hitImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Hit.PNG';
+hitImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Hit.PNG';
 const jumpImage=new Image();
-jumpImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Jump.PNG';
+jumpImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Jump.PNG';
 const fallImage=new Image();
-fallImage.src='./FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_JumpFallInBetween.PNG';
+fallImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_JumpFallInBetween.PNG';
 
 walkImage.onload = () => {
   idleImage.onload = () => {
