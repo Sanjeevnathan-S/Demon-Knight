@@ -308,24 +308,11 @@ function imageLoaded() {
     isGame=true;
   }
 }
-walkImage.onload = imageLoaded;
-idleImage.onload = imageLoaded;
-slideImage.onload = imageLoaded;
-attackImage.onload = imageLoaded;
-attack2Image.onload = imageLoaded;
-crouchAttackImage.onload = imageLoaded;
-crouchImage.onload = imageLoaded;
-comboImage.onload = imageLoaded;
-dashImage.onload = imageLoaded;
-deathImage.onload = imageLoaded;
-hitImage.onload = imageLoaded;
-jumpImage.onload = imageLoaded;
-fallImage.onload = imageLoaded;
-flyImg.onload = imageLoaded;
-deathImg.onload = imageLoaded;
-hurtImg.onload = imageLoaded;
-idleImg.onload = imageLoaded;
-attackImg.onload = imageLoaded;
+const images = [walkImage, idleImage, slideImage, attackImage, attack2Image, crouchAttackImage, crouchImage, comboImage, dashImage, deathImage, hitImage, jumpImage, fallImage, flyImg, deathImg, hurtImg, idleImg, attackImg];
+
+images.forEach(image => {
+  image.onload = imageLoaded;
+});
 
 walkImage.onload = () => {
   idleImage.onload = () => {
