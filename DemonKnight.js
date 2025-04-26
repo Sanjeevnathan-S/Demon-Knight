@@ -6,7 +6,7 @@ function resizeCanvas() {
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
-let  isGame=true;
+let  isGame=false;
 let score=0;
 let HI=0;
 const enemies=[]
@@ -297,6 +297,35 @@ const jumpImage=new Image();
 jumpImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_Jump.PNG';
 const fallImage=new Image();
 fallImage.src='FreeKnight_v1/Colour1/Outline/120x80_PNGSheets/_JumpFallInBetween.PNG';
+
+let imagesLoaded = 0;
+const totalImages = 18; 
+
+// This function will be called whenever an image finishes loading
+function imageLoaded() {
+  imagesLoaded++;
+  if (imagesLoaded === totalImages) {
+    isGame=true;
+  }
+}
+walkImage.onload = imageLoaded;
+idleImage.onload = imageLoaded;
+slideImage.onload = imageLoaded;
+attackImage.onload = imageLoaded;
+attack2Image.onload = imageLoaded;
+crouchAttackImage.onload = imageLoaded;
+crouchImage.onload = imageLoaded;
+comboImage.onload = imageLoaded;
+dashImage.onload = imageLoaded;
+deathImage.onload = imageLoaded;
+hitImage.onload = imageLoaded;
+jumpImage.onload = imageLoaded;
+fallImage.onload = imageLoaded;
+flyImg.onload = imageLoaded;
+deathImg.onload = imageLoaded;
+hurtImg.onload = imageLoaded;
+idleImg.onload = imageLoaded;
+attackImg.onload = imageLoaded;
 
 walkImage.onload = () => {
   idleImage.onload = () => {
