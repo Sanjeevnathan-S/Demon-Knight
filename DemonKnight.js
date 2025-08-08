@@ -289,31 +289,31 @@ let announcementTimer = 0;
 
  // Load images for each animation
 const walkImage = new Image();
-walkImage.src = './FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Run.png';
+walkImage.src = './FreeKnight_v1/_Run.png';
 const idleImage = new Image();
-idleImage.src = './FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Idle.png';
+idleImage.src = './FreeKnight_v1/_Idle.png';
 const slideImage=new Image();
-slideImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_SlideFull.png';
+slideImage.src='./FreeKnight_v1/_SlideFull.png';
 const attackImage=new Image();
-attackImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Attack.png';
+attackImage.src='./FreeKnight_v1/_Attack.png';
 const attack2Image=new Image();
-attack2Image.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Attack2.png';
+attack2Image.src='./FreeKnight_v1/_Attack2.png';
 const crouchAttackImage=new Image();
-crouchAttackImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_CrouchAttack.png';
+crouchAttackImage.src='./FreeKnight_v1/_CrouchAttack.png';
 const crouchImage=new Image();
-crouchImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Crouch.png';
+crouchImage.src='./FreeKnight_v1/_Crouch.png';
 const comboImage=new Image();
-comboImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_AttackCombo2hit.png';
+comboImage.src='./FreeKnight_v1/_AttackCombo2hit.png';
 const dashImage=new Image();
-dashImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Dash.png';
+dashImage.src='./FreeKnight_v1/_Dash.png';
 const deathImage=new Image();
-deathImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Death.png';
+deathImage.src='./FreeKnight_v1/_Death.png';
 const hitImage=new Image();
-hitImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Hit.png';
+hitImage.src='./FreeKnight_v1/_Hit.png';
 const jumpImage=new Image();
-jumpImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_Jump.png';
+jumpImage.src='./FreeKnight_v1/_Jump.png';
 const fallImage=new Image();
-fallImage.src='./FreeKnight_v1/Colour1/Outline/120x80_pngSheets/_JumpFallInBetween.png';
+fallImage.src='./FreeKnight_v1/_JumpFallInBetween.png';
 
 walkImage.onload = () => {
   idleImage.onload = () => {
