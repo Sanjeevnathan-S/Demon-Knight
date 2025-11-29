@@ -16,7 +16,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 
-const port = 3000;//use http://localhost:3000/ to run app
+const port = 3000;
 const JWT_SECRET = process.env.JWT_SECRET;
 
 //app.use(cors);
