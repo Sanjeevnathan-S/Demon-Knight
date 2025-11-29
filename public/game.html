@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <title>Demon Knight</title>
+  <style>
+  /* General resets and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #eee;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  canvas {
+    display: block;
+    margin: auto;
+    background: #000;
+    width: 100%;
+    height: 90vh;
+    border-bottom: 2px solid #444;
+  }
+
+  /* Controls Section */
+  .controls-container {
+    margin: 30px 100px;
+  }
+
+  .controls-container h1 {
+    font-weight: bold;
+    font-style: italic;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #f0db4f;
+  }
+
+  .main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px 100px;
+  gap: 40px;
+}
+
+.leaderboard-container {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border: 2px solid #555;
+  border-radius: 8px;
+  width: 300px;
+  height: fit-content;
+  color: white;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.leaderboard-container h2 {
+  margin-bottom: 15px;
+  color: #ffd700;
+  text-align: center;
+}
+
+#leaderboardList {
+  list-style: none;
+  padding-left: 0;
+}
+
+#leaderboardList li {
+  background-color: #2a2a2a;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  color: #eee;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+#leaderboardList li:hover {
+  background-color: #444;
+}
+
+  table {
+    border-collapse: collapse;
+    width: auto;
+    border: 2px solid #666;
+    background-color: #1e1e1e;
+  }
+
+  table, th, td {
+    border: 1px solid #555;
+  }
+
+  td {
+    padding: 12px 20px;
+    text-align: center;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+
+  td:first-child {
+    color: #00bcd4;
+    font-weight: bold;
+  }
+
+  td:hover {
+    background-color: #333;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #111;
+    color: #ccc;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: auto;
+  }
+
+  footer a {
+    color: #4fd1c5;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="1980" height="1080" ></canvas>
+
+
+  <div class="main-content">
+  <div class="controls-container">
+    <h1 style="font-weight: bold;font-style: italic;text-align: left;">Controls</h1>
+    <table>
+      <tr>
+        <td>R</td>
+        <td>Restart</td>
+      </tr>
+      <tr>
+        <td>←</td>
+        <td>Dodge</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>Dash</td>
+      </tr>
+      <tr>
+        <td>↑</td>
+        <td>Jump</td>
+      </tr>
+      <tr>
+        <td>→</td>
+        <td>Run</td>
+      </tr>
+      <tr>
+        <td>Ctrl + →</td>
+        <td>Slide</td>
+      </tr>
+      <tr>
+        <td>Ctrl + Z</td>
+        <td>Crouch Attack</td>
+      </tr>
+      <tr>
+        <td>Z</td>
+        <td>Basic Attack</td>
+      </tr>
+      <tr>
+        <td>X</td>
+        <td>Light Attack</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>Combo Attack</td>
+      </tr>
+      <tr>
+        <td>ESC</td>
+        <td>Pause</td>
+      </tr>
+    </table>
+  </div>
+  <div class="leaderboard-container">
+    <h2>🏆 Leaderboard</h2>
+    <ul id="leaderboardList"></ul>
+  </div>
+</div>
+
+  <footer>
+    <p>&copy; 2025 Demon Knight Game.</p>
+    <p><a href="https://github.com/san-007-007/Demon-Knight" target="_blank">source code</a></p>
+  </footer>
+
+  <script src="js/DemonKnight.js"></script>
+  <script>
+    fetch('/api/game/leaderboard')
+  .then(res => res.json())
+  .then(data => {
+    const leaderboardList = document.getElementById('leaderboardList');
+    leaderboardList.innerHTML = '';
+
+    if (data.success && Array.isArray(data.leaderboard)) {
+      data.leaderboard.forEach((player, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span>#${index + 1} ${player.username || 'Anonymous'}</span> <span>${player.highScore}</span>`;;
+        leaderboardList.appendChild(li);
+      });
+    } else {
+      console.warn('Leaderboard data not found or invalid format');
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching leaderboard:', error);
+  });
+  </script>
+
+</body>
+</html>

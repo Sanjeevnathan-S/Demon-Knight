@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Multiplayer Lobby</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #f39c12;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #222;
+      margin: 5px;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    li:hover {
+      background: #333;
+    }
+    #startBtn {
+      background: #27ae60;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+      margin-top: 20px;
+    }
+    #startBtn:hover {
+      background: #2ecc71;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Multiplayer Lobby</h1>
+  <p id="welcomeUser">Loading...</p>
+
+  <div id="players">
+    <h2>Online Players:</h2>
+    <ul id="onlinePlayers"></ul>
+  </div>
+
+  <div id="invites">
+    <h2>Invites Received:</h2>
+    <ul id="inviteList"></ul>
+  </div>
+
+  <div id="sessionInfo">
+    <h2>Current Session:</h2>
+    <ul id="sessionPlayers"></ul>
+  </div>
+
+  <button id="startBtn" onclick="startGame()">Start Game</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/socket.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!-- public/game.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Multiplayer Game</title>
+  <style>
+    /* Reset some defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    #gameInfo {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    #gameInfo p {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    #playerList {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #playerList li {
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+
+    #gameCanvas {
+      border: 3px solid #fff;
+      border-radius: 10px;
+      background-color: #222;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 850px) {
+      #gameCanvas {
+        width: 100%;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Multiplayer Game</h1>
+
+  <div id="gameInfo">
+    <p>Session ID: <span id="sessionId">Loading...</span></p>
+    <p>Players:</p>
+    <ul id="playerList">
+      <li>Waiting for players...</li>
+    </ul>
+  </div>
+
+  <canvas id="gameCanvas" width="800" height="300"></canvas>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/DemonKnight-multi.js"></script>
+</body>
+</html>
