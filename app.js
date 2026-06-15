@@ -23,7 +23,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 
-const port = 3000;
+const port = process.env.PORT || 3000;// To make this deployable standard
 const JWT_SECRET = process.env.JWT_SECRET;
 
 app.use(cors());
