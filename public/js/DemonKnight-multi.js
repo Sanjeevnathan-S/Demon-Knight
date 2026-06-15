@@ -95,26 +95,14 @@ function sendInput() {
 }
 
 // (matches server tick rate)
-setInterval(sendInput, 50);
+setInterval(sendInput, 20);
 
 // ========== CANVAS & RENDERING ==========
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-function resizeCanvas() {
-  const dpr = window.devicePixelRatio || 1;
-  canvas.width = window.innerWidth * dpr;
-  canvas.height = window.innerHeight* dpr;
-  canvas.style.width = window.innerWidth + 'px';
-  canvas.style.height = window.innerHeight + 'px';
-
-  const ctx = canvas.getContext('2d');
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); 
-}
-resizeCanvas();
-
-window.addEventListener('resize', resizeCanvas);
-window.addEventListener('resize', resizeCanvas);
+canvas.width=1800;
+canvas.height=800;
 
 // Sprite loading
 const loadImage = (path) => {
@@ -166,14 +154,16 @@ function drawPlayer(ctx, player) {
   const dWidth = frameWidth * scale;
   const dHeight = frameHeight * scale;
   const dx = player.x - dWidth / 2;
-  const dy = player.y - dHeight; // ← Anchor at feet, not center
+  const groundOffset = 10;
+  const dy = player.y - dHeight;
+ // const dy = player.y - dHeight; // ← Anchor at feet, not center
 
   ctx.save();
  if (player.direction === 'left') {
   // Flip horizontally around the sprite center
-  ctx.translate(player.x, player.y - dHeight / 2);
+  ctx.translate(player.x, 0);
   ctx.scale(-1, 1);
-  ctx.translate(-player.x, -(player.y - dHeight / 2));
+  ctx.translate(-player.x, 0);
 }
 
 ctx.drawImage(sprite, sx, 0, frameWidth, frameHeight, dx, dy, dWidth, dHeight);
@@ -213,6 +203,7 @@ function drawProjectile(ctx, projectile) {
 
   const t = Date.now() / 120; // animation speed factor
   const centerY = y - height / 2;
+  //const centerY = y;
   const baseRadius = 15;
 
   // Dragon energy aura radius pulsation

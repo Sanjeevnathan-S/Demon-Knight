@@ -482,7 +482,7 @@ setInterval(() => {
     broadcastSessionState(ioRef,sessionId, session);
     updateDeadPlayers(ioRef,session,sessionId);
   });
-}, 50);
+}, 20);
 
 function handlePlayerCollisions(session,sessionId ) {
   const playersArray = Array.from(session.players.values());

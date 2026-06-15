@@ -1,3 +1,10 @@
+const dns = require('dns');
+
+dns.setServers([
+  '8.8.8.8',
+  '8.8.4.4'
+]);
+
 const express = require('express');
 const mongoose = require('mongoose');
 const gameRoutes = require('./src/routes/gameRoutes');
@@ -8,7 +15,7 @@ const Player =require('./src/models/Player');
 const path = require('path');
 const { Server } = require('socket.io');
 const http =require('http');
-//const cors=require('cors');//useful when I redirect stuffs to another domain or port(cross-orgin)
+const cors=require('cors');//useful when I redirect stuffs to another domain or port(cross-orgin)
 const socketServer=require('./src/socket/socketServer');
 
 const app = express();
@@ -19,13 +26,11 @@ const io = new Server(server);
 const port = 3000;
 const JWT_SECRET = process.env.JWT_SECRET;
 
-//app.use(cors);
+app.use(cors());
 app.use(express.json());//To parse JSON
 
 //serve static files
 app.use(express.static(path.join(__dirname, 'public')));
-
-console.log(process.env.MONGODB_URI);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
@@ -49,11 +54,26 @@ app.get('/', (req, res) => {
 // Login (POST Request)
 app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
+  if (!username || username.trim() === '') {
+    return res.status(400).json({
+      success: false,
+      message: 'Username is required'
+    });
+  }
+
+  if (!password || password.trim() === '') {
+    return res.status(400).json({
+      success: false,
+      message: 'Password is required'
+    });
+  }
   try {
     const player = await Player.findOne({ username });
-    const match= await bcrypt.compare(password,player.password);
-    if (!player || !match ) {
-      return res.status(400).json({ success: false, message: 'Invalid username or password.' });
+    if (!player || !(await bcrypt.compare(password, player.password))) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid username or password.'
+      });
     }
 
     const token = jwt.sign({ userId: player._id }, JWT_SECRET, { expiresIn: '1h' });
@@ -67,6 +87,19 @@ app.post('/api/login', async (req, res) => {
 // Multiplayer Login (POST Request)
 app.post('/api/multiplayer-login', async (req, res) => {
   const { username, password } = req.body;
+  if (!username || username.trim() === '') {
+    return res.status(400).json({
+      success: false,
+      message: 'Username is required'
+    });
+  }
+
+  if (!password || password.trim() === '') {
+    return res.status(400).json({
+      success: false,
+      message: 'Password is required'
+    });
+  }
   
   try {
     if (typeof username !== 'string') {
@@ -76,9 +109,11 @@ app.post('/api/multiplayer-login', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Invalid or missing password' });
     }
     const player = await Player.findOne({ username });
-    const match= await bcrypt.compare(password,player.password);
-    if (!player || !match) {
-      return res.status(400).json({ success: false, message: 'Invalid username or password.' });
+    if (!player || !(await bcrypt.compare(password, player.password))) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid username or password.'
+      });
     }
 
     const token = jwt.sign({ userId: player._id }, JWT_SECRET, { expiresIn: '1h' });
@@ -92,6 +127,19 @@ app.post('/api/multiplayer-login', async (req, res) => {
 //Signup (POST request)
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
+  if (!username || username.trim() === '') {
+    return res.status(400).json({
+      success: false,
+      message: 'Username is required'
+    });
+  }
+
+  if (!password || password.trim() === '') {
+    return res.status(400).json({
+      success: false,
+      message: 'Password is required'
+    });
+  }
 
   try {
     const existing = await Player.findOne({ username });
