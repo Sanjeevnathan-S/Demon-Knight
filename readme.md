@@ -261,7 +261,7 @@ The system is built around real-time event-based communication using Socket.IO.
 ### Clone Repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Sanjeevnathan-S/Demon-Knight.git
 cd demon-knight
 ```
 
