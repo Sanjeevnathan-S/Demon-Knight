@@ -51,6 +51,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));//cross platform path usage
 });
 
+// Health check route
+app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Login (POST Request)
 app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
