@@ -209,7 +209,7 @@ function saveGameData(score) {
   };
 
   // Send the data to the backend using a POST request
-  fetch('/api/game/save-score', {
+  fetch(`${window.location.origin}/api/game/save-score`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
