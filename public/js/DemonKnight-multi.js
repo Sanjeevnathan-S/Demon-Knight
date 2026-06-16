@@ -19,7 +19,7 @@ if (!sessionId || !userId || !username) {
 document.getElementById("sessionId").textContent = sessionId;
 
 // Socket setup force to use IPv4
-const socket = io('http://127.0.0.1:3000', {
+const socket = io(window.location.origin, { //window.location.origin instead of localhost
   transports: ['websocket', 'polling'],
 });
 
